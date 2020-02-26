@@ -2,13 +2,13 @@
   .header__top
     .header__top__user
       .header__top__user__name
-        name
+        = current_user.name
       %ul.header__top__user__icon
         %li.header__top__user__icon__edit
           = link_to "#", class: "icon-edit" do
             = icon('far', 'edit')
         %li.header__top__user__icon__cog
-          = link_to "#", class: "icon-cog" do
+          = link_to edit_user_path(current_user) do
             = icon('fas', 'cog')
   .header__main
     .header__main__users
