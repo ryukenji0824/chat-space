@@ -5,22 +5,16 @@
         = current_user.name
       %ul.header__top__user__icon
         %li.header__top__user__icon__edit
-          = link_to new_group_path(current_user), class: "icon-edit" do
+          = link_to new_group_path do
             = icon('far', 'edit')
         %li.header__top__user__icon__cog
           = link_to edit_user_path(current_user) do
             = icon('fas', 'cog')
-  .header__main
-    .header__main__users
-      user
-    .header__main__messages
-      message
-      -# 画面表示確認のため繰り返し表示
-    .header__main__users
-      user
-    .header__main__messages
-      message
-    .header__main__users
-      user
-    .header__main__messages
-      message
+  .groups
+    - current_user.groups.each do |group|
+      .group
+        = link_to '#' do
+          .group__name
+            = group.name
+          .group__message
+            メッセージはまだありません。
