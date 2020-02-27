@@ -8,6 +8,7 @@
   height: 100vh;
   width: 300px;
   float: left;
+  color: $text-color;
   &__top{
     background-color: $headerBack;
     height: 100px;
@@ -42,21 +43,30 @@
         }
       }
     }
-  &__main{
+  .groups{
   background-color: #2f3e51;
   height: calc(100vh - 100px);
-  width: 300px;
-    &__users{
-    padding: 20px 20px 5px 20px;
-    color: $text-color;
-    font-weight: bold;
-    font-size: 15px;
-    }
-    &__messages{
-    color: $text-color;
-    font-weight: bold;
-    padding: 0 20px 40px 20px;
-    font-size: 11px;
+  padding: 20px 20px 0;
+  overflow: scroll;
+    .group{
+      margin-bottom: 40px;
+      a {
+        text-decoration:none;
+      }
+      &__name{
+        margin-bottom: 5px;
+        color: $text-color;
+        font-weight: bold;
+        font-size: 15px;
+        text-decoration: none;
+      }
+      &__message{
+        color: $text-color;
+        font-weight: bold;
+        font-size: 11px;
+        color: $text-color;
+        text-decoration: none;
+      }
     }
   }
 }
