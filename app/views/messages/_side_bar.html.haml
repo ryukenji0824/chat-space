@@ -1,20 +1,20 @@
 .header
   .header__top
     .header__top__user
+      = current_user.name
       .header__top__user__name
-        = current_user.name
       %ul.header__top__user__icon
         %li.header__top__user__icon__edit
           = link_to new_group_path do
             = icon('far', 'edit')
         %li.header__top__user__icon__cog
-          = link_to edit_user_path(current_user) do
+          = link_to edit_user_path(current_user.id) do
             = icon('fas', 'cog')
   .groups
     - current_user.groups.each do |group|
       .group
-        = link_to '#' do
+        = link_to group_messages_path(group) do
           .group__name
             = group.name
           .group__message
-            メッセージはまだありません。
+            = group.show_last_message

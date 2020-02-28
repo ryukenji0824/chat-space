@@ -6,43 +6,15 @@
         member:name
     .contents__top__edit-btn
       = link_to "Edit", class: "Edit-btn" 
-  .contents__main
-    .contents__main__user
-      .contents__main__user-name
-        name
-        .contents__main__user-name__date
-          2020/02/24(mon) 17:00:00
-      .contents__main__user-message
-        message
-    -# 画面表示確認のため繰り返し表示
-    .contents__main__user
-      .contents__main__user-name
-        name
-        .contents__main__user-name__date
-          2020/02/24(mon) 17:00:00
-      .contents__main__user-message
-        message
-    .contents__main__user
-      .contents__main__user-name
-        name
-        .contents__main__user-name__date
-          2020/02/24(mon) 17:00:00
-      .contents__main__user-message
-        message
-    .contents__main__user
-      .contents__main__user-name
-        name
-        .contents__main__user-name__date
-          2020/02/24(mon) 17:00:00
-      .contents__main__user-message
-        message
+
+  .messages 
+    = render @messages
   
-  .contents__bottom
-    .contents__bottom__form
-      %form.message_box
-        .input-box
-          %input{type:"text",class:"input-box__text",placeholder:"type a message"}
-          %label{class:"input-box__image"}
-            = icon("fas","image")
-            %input{type: "file",class:"input-box__image__file"}
-        %input{type:"submit",class:"submit__btn",value:"Send",name:"commit"}
+  .form
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+      .form__mask
+        = f.label :image, class: 'form__mask__image' do
+          = icon('fas', 'image', class: 'icon')
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'
