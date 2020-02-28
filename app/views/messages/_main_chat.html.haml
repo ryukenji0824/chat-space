@@ -1,11 +1,12 @@
 .contents
   .contents__top
     .contents__top__group
-      test
+      .contents__top__group__name
+      = @group.name
       .contents__top__group-member
-        member:name
+        Member: #{current_user.name}
     .contents__top__edit-btn
-      = link_to "Edit", class: "Edit-btn" 
+      = link_to "Edit", edit_group_path(@group.id), class: "Edit-btn"
 
   .messages 
     = render @messages
