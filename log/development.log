@@ -13541,3 +13541,142 @@ Processing by MessagesController#index as HTML
 Completed 200 OK in 110ms (Views: 71.3ms | ActiveRecord: 32.0ms)
 
 
+Started GET "/" for ::1 at 2020-02-29 15:00:52 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by GroupsController#index as HTML
+Completed 401 Unauthorized in 13ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-02-29 15:00:52 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.haml (2.5ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (28.8ms)
+  Rendered layouts/_notifications.html.haml (2.5ms)
+Completed 200 OK in 420ms (Views: 398.2ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-02-29 15:01:07 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.haml (2.3ms)
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_haml__2583787502062013706_70270124350680 at /Users/ryukenji/projects/chat-space/app/views/devise/registrations/new.html.haml:9)
+  Rendered devise/registrations/new.html.haml within layouts/application (14.8ms)
+  Rendered layouts/_notifications.html.haml (3.3ms)
+Completed 200 OK in 72ms (Views: 70.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2020-02-29 15:02:07 +0900
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LsGxfBIy9jONPvPXW1YbxWr1zfmBkHuCh1z+HsSvhnbJueW/FCNe2GTxwB38Urvtp9MQLmXS22KOTSD8KKO1Cg==", "user"=>{"name"=>"hogehoge", "email"=>"hoge@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (4.7ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'hoge@email.com' LIMIT 1[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `created_at`, `updated_at`, `name`) VALUES ('hoge@email.com', '$2a$11$/.7mGy1HUg1nAzrNwSxFReBjHxXzjFu9AZpWHDg/83bMLPWiqrrAi', '2020-02-29 06:02:08', '2020-02-29 06:02:08', 'hogehoge')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 180ms (ActiveRecord: 6.3ms)
+
+
+Started GET "/" for ::1 at 2020-02-29 15:02:08 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 7 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  [1m[36mGroup Load (2.6ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` INNER JOIN `group_users` ON `groups`.`id` = `group_users`.`group_id` WHERE `group_users`.`user_id` = 7[0m
+  Rendered messages/_side_bar.html.haml (53.9ms)
+  Rendered groups/index.html.haml within layouts/application (58.9ms)
+  Rendered layouts/_notifications.html.haml (2.0ms)
+Completed 200 OK in 93ms (Views: 74.7ms | ActiveRecord: 14.7ms)
+
+
+Started GET "/groups/new" for ::1 at 2020-02-29 15:02:29 +0900
+Processing by GroupsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 7 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/new.html.haml within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+  Rendered groups/_form.html.haml (72.6ms)
+  Rendered groups/new.html.haml within layouts/application (76.9ms)
+  Rendered layouts/_notifications.html.haml (1.6ms)
+Completed 200 OK in 128ms (Views: 103.8ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/groups" for ::1 at 2020-02-29 15:02:59 +0900
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nw9QtfLdilcmx276vib5o/kkxxknJB06ts4TEMJTKKKRWlWwUBsRtqtvdx909ASuX0yKqVNwAD7yh/D7BY/v8A==", "group"=>{"name"=>"hogehoge", "user_ids"=>["", "2", "3", "6", "7"]}, "commit"=>"登録する"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 7 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 3, 6, 7)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroup Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM `groups` WHERE `groups`.`name` = BINARY 'hogehoge' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `groups` (`name`, `created_at`, `updated_at`) VALUES ('hogehoge', '2020-02-29 06:02:59', '2020-02-29 06:02:59')[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (5, 2, '2020-02-29 06:02:59', '2020-02-29 06:02:59')[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (5, 3, '2020-02-29 06:02:59', '2020-02-29 06:02:59')[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (5, 6, '2020-02-29 06:02:59', '2020-02-29 06:02:59')[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (5, 7, '2020-02-29 06:02:59', '2020-02-29 06:02:59')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 37ms (ActiveRecord: 5.4ms)
+
+
+Started GET "/" for ::1 at 2020-02-29 15:02:59 +0900
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 7 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering groups/index.html.haml within layouts/application
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` INNER JOIN `group_users` ON `groups`.`id` = `group_users`.`group_id` WHERE `group_users`.`user_id` = 7[0m
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT  `messages`.* FROM `messages` WHERE `messages`.`group_id` = 5 ORDER BY `messages`.`id` DESC LIMIT 1[0m
+  Rendered messages/_side_bar.html.haml (36.0ms)
+  Rendered groups/index.html.haml within layouts/application (39.9ms)
+  Rendered layouts/_notifications.html.haml (1.6ms)
+Completed 200 OK in 74ms (Views: 63.0ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/groups/5/messages" for ::1 at 2020-02-29 15:03:00 +0900
+Processing by MessagesController#index as HTML
+  Parameters: {"group_id"=>"5"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 7 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT  `groups`.* FROM `groups` WHERE `groups`.`id` = 5 LIMIT 1[0m
+  Rendering messages/index.html.haml within layouts/application
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` INNER JOIN `group_users` ON `groups`.`id` = `group_users`.`group_id` WHERE `group_users`.`user_id` = 7[0m
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT  `messages`.* FROM `messages` WHERE `messages`.`group_id` = 5 ORDER BY `messages`.`id` DESC LIMIT 1[0m
+  Rendered messages/_side_bar.html.haml (6.5ms)
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT `messages`.* FROM `messages` WHERE `messages`.`group_id` = 5[0m
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered messages/_main_chat.html.haml (6.9ms)
+  Rendered messages/index.html.haml within layouts/application (18.1ms)
+  Rendered layouts/_notifications.html.haml (1.6ms)
+Completed 200 OK in 62ms (Views: 44.8ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/groups/5/messages" for ::1 at 2020-02-29 15:03:04 +0900
+Processing by MessagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lNK8TkKJJJGCoPXB5rQ1a6spnXf1dTpU80lQOIsl5DFE5dA4yZcmhcLZnoaCzRsPhPYeWkZSXYz+YVhbzeNrhA==", "message"=>{"content"=>"a"}, "commit"=>"Send", "group_id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 7 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT  `groups`.* FROM `groups` WHERE `groups`.`id` = 5 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO `messages` (`content`, `group_id`, `user_id`, `created_at`, `updated_at`) VALUES ('a', 5, 7, '2020-02-29 06:03:04', '2020-02-29 06:03:04')[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/groups/5/messages
+Completed 302 Found in 13ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/groups/5/messages" for ::1 at 2020-02-29 15:03:04 +0900
+Processing by MessagesController#index as HTML
+  Parameters: {"group_id"=>"5"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 7 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT  `groups`.* FROM `groups` WHERE `groups`.`id` = 5 LIMIT 1[0m
+  Rendering messages/index.html.haml within layouts/application
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` INNER JOIN `group_users` ON `groups`.`id` = `group_users`.`group_id` WHERE `group_users`.`user_id` = 7[0m
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT  `messages`.* FROM `messages` WHERE `messages`.`group_id` = 5 ORDER BY `messages`.`id` DESC LIMIT 1[0m
+  Rendered messages/_side_bar.html.haml (7.7ms)
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT `messages`.* FROM `messages` WHERE `messages`.`group_id` = 5[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7[0m
+  Rendered collection of messages/_message.html.haml [1 times] (3.1ms)
+  Rendered messages/_main_chat.html.haml (17.0ms)
+  Rendered messages/index.html.haml within layouts/application (30.6ms)
+  Rendered layouts/_notifications.html.haml (2.4ms)
+Completed 200 OK in 64ms (Views: 57.9ms | ActiveRecord: 1.8ms)
+
+
