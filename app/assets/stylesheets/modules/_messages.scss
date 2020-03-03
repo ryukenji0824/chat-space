@@ -66,6 +66,7 @@
           font-size: 11px;
           color: $text-color;
           text-decoration: none;
+          overflow: scroll;
         }
       }
     }
@@ -80,6 +81,7 @@
       @include displayF();
       justify-content: space-between;
       padding: 0 40px;
+      list-style: none;
       &__group{
         color: #333333;
         padding: 35px 0 15px 0;
@@ -112,6 +114,7 @@
       height: calc(100vh - 190px);
       width: calc(100vw - 300px);
       padding: 46px 40px;
+      overflow: scroll;
       .message{
         padding-bottom: 40px;
         .upper-message{
