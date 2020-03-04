@@ -18,6 +18,7 @@
       padding: 0 20px;
       &__user{
         background-color: $headerBack;
+        
         height: 20px;
         width: 100%;
         @include displayF();
@@ -142,23 +143,24 @@
       }
     }
     .form {
+      // position: relative;
       background-color: #DDDDDD;
       box-sizing: border-box;
       height: 90px;
       padding: 20px 50px 20px 40px;
       &__message {
-        border: none;
         float: left;
+        border: none;
         height: 50px;
         width: calc(100% - 150px);
-        padding: 0 40px 0 10px;
-
+        padding: 0 40px 0 10px;         
       }
       &__mask {
         background-color: $white;
         float: left;
         height: 50px;
         padding-right: 10px;
+        right: 10px;
         &__image {
           font-size: 20px;
           line-height: 50px;
@@ -180,5 +182,5 @@
         cursor: pointer;
       }
     }
-  }
+  } 
 }
