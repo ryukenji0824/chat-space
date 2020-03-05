@@ -12,7 +12,7 @@ $(function () {
               ${message.date}
             </div>
           </div>
-          <div class="lower-meesage">
+          <div class="lower-message">
             <p class="lower-message__content">
               ${message.content}
             </p>
