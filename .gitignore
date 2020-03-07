@@ -13,3 +13,5 @@
 
 # Ignore all logfiles and tempfiles.
 # Ignore Byebug command history file.
+
+config/secrets.yml
