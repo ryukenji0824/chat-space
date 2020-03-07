@@ -3,12 +3,8 @@
     .contents__top__group
       .contents__top__group__name
       = @group.name
-      %ul.contents__top__group-member
-        Member：
-          %li.contents__top__group-member-list
-            - @group.group_users.each do |group_user|
-              = group_user.user.name
-
+      .contents__top__group-member
+        Member: #{current_user.name}
     .contents__top__edit-btn
       = link_to "Edit", edit_group_path(@group.id), class: "Edit-btn"
 
